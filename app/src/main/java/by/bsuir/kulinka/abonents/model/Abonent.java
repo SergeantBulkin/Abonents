@@ -1,6 +1,4 @@
-package com.example.bottomapp.bar.test.model;
-
-import java.sql.Date;
+package by.bsuir.kulinka.abonents.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -19,11 +17,19 @@ public class Abonent
     private int plan_id;
     private float balance;
     private String address;
-    private Date create_date;
+    private String create_date;
     //----------------------------------------------------------------------------------------------
-    public Abonent()
+    public Abonent(Integer id, String lastname, String name, int age, String mobile_number, int plan_id, float balance, String address, String create_date)
     {
-
+        this.id = id;
+        this.lastname = lastname;
+        this.name = name;
+        this.age = age;
+        this.mobile_number = mobile_number;
+        this.plan_id = plan_id;
+        this.balance = balance;
+        this.address = address;
+        this.create_date = create_date;
     }
     //----------------------------------------------------------------------------------------------
     public Integer getId()
@@ -106,12 +112,12 @@ public class Abonent
         this.address = address;
     }
 
-    public Date getCreate_date()
+    public String getCreate_date()
     {
         return create_date;
     }
 
-    public void setCreate_date(Date create_date)
+    public void setCreate_date(String create_date)
     {
         this.create_date = create_date;
     }

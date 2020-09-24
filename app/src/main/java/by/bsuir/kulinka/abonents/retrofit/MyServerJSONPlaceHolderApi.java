@@ -1,6 +1,6 @@
-package com.example.bottomapp.bar.test.retrofit;
+package by.bsuir.kulinka.abonents.retrofit;
 
-import com.example.bottomapp.bar.test.model.Abonent;
+import by.bsuir.kulinka.abonents.model.Abonent;
 
 import java.util.List;
 

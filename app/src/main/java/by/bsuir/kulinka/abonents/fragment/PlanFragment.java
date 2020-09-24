@@ -1,4 +1,4 @@
-package com.example.bottomapp.bar.test.fragment;
+package by.bsuir.kulinka.abonents.fragment;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.bottomapp.bar.test.R;
+import com.bsuir.bottomapp.bar.abonents.R;
 
 public class PlanFragment extends Fragment
 {

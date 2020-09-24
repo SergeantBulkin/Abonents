@@ -1,4 +1,4 @@
-package com.example.bottomapp.bar.test.retrofit;
+package by.bsuir.kulinka.abonents.retrofit;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -11,7 +11,7 @@ public class MyServerNetworkService
     private static MyServerNetworkService instance;
 
     //Постоянная часть ссылки
-    private static final String BASE_URL = "https://192.168.43.86:8080/";
+    private static final String BASE_URL = "http://192.168.43.86:8080/";
     private static Retrofit retrofit;
     //----------------------------------------------------------------------------------------------
     //Конструктор

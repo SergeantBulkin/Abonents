@@ -1,25 +1,22 @@
-package com.example.bottomapp.bar.test.model;
+package by.bsuir.kulinka.abonents.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Plan
+public class Service
 {
     //----------------------------------------------------------------------------------------------
     @PrimaryKey
     private int id;
 
-    private String plan_name;
+    private String service_name;
+    private float cost;
     //----------------------------------------------------------------------------------------------
-    public Plan()
+    public Service(String service_name, float cost)
     {
-
-    }
-
-    public Plan(String plan_name)
-    {
-        this.plan_name = plan_name;
+        this.service_name = service_name;
+        this.cost = cost;
     }
     //----------------------------------------------------------------------------------------------
     public int getId()
@@ -32,16 +29,25 @@ public class Plan
         this.id = id;
     }
 
-    public String getPlan_name()
+    public String getService_name()
     {
-        return plan_name;
+        return service_name;
     }
 
-    public void setPlan_name(String plan_name)
+    public void setService_name(String service_name)
     {
-        this.plan_name = plan_name;
+        this.service_name = service_name;
+    }
+
+    public float getCost()
+    {
+        return cost;
+    }
+
+    public void setCost(float cost)
+    {
+        this.cost = cost;
     }
     //----------------------------------------------------------------------------------------------
 }
-
 

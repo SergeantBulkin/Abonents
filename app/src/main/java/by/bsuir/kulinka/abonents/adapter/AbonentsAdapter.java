@@ -1,12 +1,12 @@
-package com.example.bottomapp.bar.test.adapter;
+package by.bsuir.kulinka.abonents.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.bottomapp.bar.test.R;
-import com.example.bottomapp.bar.test.model.Abonent;
+import com.bsuir.bottomapp.bar.abonents.R;
+import by.bsuir.kulinka.abonents.model.Abonent;
 
 import java.util.List;
 
