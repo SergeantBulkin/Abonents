@@ -1,13 +1,8 @@
 package by.bsuir.kulinka.abonents.model;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class Plan
 {
     //----------------------------------------------------------------------------------------------
-    @PrimaryKey
     private int id;
 
     private String plan_name;

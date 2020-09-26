@@ -3,15 +3,9 @@ package by.bsuir.kulinka.abonents.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class Abonent implements Parcelable
 {
     //----------------------------------------------------------------------------------------------
-    @PrimaryKey
     private Integer id;
 
     private String lastname;
@@ -37,7 +31,6 @@ public class Abonent implements Parcelable
         this.create_date = create_date;
     }
 
-    @Ignore
     public Abonent(String lastname, String name, int age, String mobile_number, int plan_id, float balance, String address, String create_date)
     {
         this.lastname = lastname;
@@ -50,7 +43,6 @@ public class Abonent implements Parcelable
         this.create_date = create_date;
     }
 
-    @Ignore
     public Abonent(Parcel parcel)
     {
         this.id = parcel.readInt();
