@@ -1,6 +1,7 @@
 package by.bsuir.kulinka.abonents.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -19,6 +20,7 @@ public class Abonent
     private String address;
     private String create_date;
     //----------------------------------------------------------------------------------------------
+    //Конструкторы
     public Abonent(Integer id, String lastname, String name, int age, String mobile_number, int plan_id, float balance, String address, String create_date)
     {
         this.id = id;
