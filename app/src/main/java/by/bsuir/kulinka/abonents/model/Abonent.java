@@ -1,11 +1,14 @@
 package by.bsuir.kulinka.abonents.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Abonent
+public class Abonent implements Parcelable
 {
     //----------------------------------------------------------------------------------------------
     @PrimaryKey
@@ -32,6 +35,33 @@ public class Abonent
         this.balance = balance;
         this.address = address;
         this.create_date = create_date;
+    }
+
+    @Ignore
+    public Abonent(String lastname, String name, int age, String mobile_number, int plan_id, float balance, String address, String create_date)
+    {
+        this.lastname = lastname;
+        this.name = name;
+        this.age = age;
+        this.mobile_number = mobile_number;
+        this.plan_id = plan_id;
+        this.balance = balance;
+        this.address = address;
+        this.create_date = create_date;
+    }
+
+    @Ignore
+    public Abonent(Parcel parcel)
+    {
+        this.id = parcel.readInt();
+        this.lastname = parcel.readString();
+        this.name = parcel.readString();
+        this.age = parcel.readInt();
+        this.mobile_number = parcel.readString();
+        this.plan_id = parcel.readInt();
+        this.balance = parcel.readFloat();
+        this.address = parcel.readString();
+        this.create_date = parcel.readString();
     }
     //----------------------------------------------------------------------------------------------
     public Integer getId()
@@ -122,6 +152,46 @@ public class Abonent
     public void setCreate_date(String create_date)
     {
         this.create_date = create_date;
+    }
+    //----------------------------------------------------------------------------------------------
+    @Override
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeInt(this.id);
+        dest.writeString(this.lastname);
+        dest.writeString(this.name);
+        dest.writeInt(this.age);
+        dest.writeString(this.mobile_number);
+        dest.writeInt(this.plan_id);
+        dest.writeFloat(this.balance);
+        dest.writeString(this.address);
+        dest.writeString(this.create_date);
+    }
+    //----------------------------------------------------------------------------------------------
+    public static final Creator<Abonent> CREATOR = new Creator<Abonent>()
+    {
+        @Override
+        public Abonent createFromParcel(Parcel source)
+        {
+            return new Abonent(source);
+        }
+
+        @Override
+        public Abonent[] newArray(int size)
+        {
+            return new Abonent[size];
+        }
+    };
+
+    public static Creator<Abonent> getCreator()
+    {
+        return CREATOR;
     }
     //----------------------------------------------------------------------------------------------
 }
