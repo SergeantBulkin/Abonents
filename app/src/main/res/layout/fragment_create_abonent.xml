@@ -10,6 +10,19 @@
         android:layout_height="match_parent"
         tools:context="by.bsuir.kulinka.abonents.fragment.CreateAbonentFragment">
         <!--==================================================================================-->
+        <!--ProgressBar-->
+        <ProgressBar
+            android:id="@+id/createAbonentProgressBar"
+            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        </ProgressBar>
+        <!--==================================================================================-->
         <!--Имя-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutAbonentName"
@@ -24,15 +37,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextAbonentName"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
+                android:layout_height="wrap_content"
+                android:maxLength="50"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
         <!--Фамилия-->
@@ -49,15 +59,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentName">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextAbonentLastname"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
+                android:layout_height="wrap_content"
+                android:maxLength="50"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
         <!--Возраст-->
@@ -74,15 +81,12 @@
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentLastname">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextAbonentAge"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
         <androidx.constraintlayout.widget.Guideline
@@ -106,15 +110,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentLastname">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextAbonentMobileNumber"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
+                android:layout_height="wrap_content"
+                android:maxLength="15"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
         <!--Баланс-->
@@ -125,21 +126,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/textInputLayoutFromParent"
             android:layout_marginTop="@dimen/textInputLayoutFromTop"
-            android:layout_marginEnd="@dimen/textInputLayoutFromParent"
+            android:layout_marginEnd="8dp"
             android:hint="@string/abonent_balance"
             app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentAge">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextAbonentBalance"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
         <!--Тарифный план-->
@@ -148,29 +146,39 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/textInputLayoutFromParent"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="@dimen/textInputLayoutFromTop"
             android:layout_marginEnd="@dimen/textInputLayoutFromParent"
             android:hint="@string/abonent_plan"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentAge">
-
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentMobileNumber">
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/textInputEditTextAbonentPlan"
+                android:id="@+id/textFieldAutocompleteAbonentPlan"
                 style="@style/TextInputEditText"
-                android:editable="false"
+                android:inputType="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.MaterialAutoCompleteTextView>
-
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
+        <!--==================================================================================-->
+        <!--ProgressBar загрузки планов-->
+        <ProgressBar
+            android:id="@+id/plansProgressBar"
+            style="@android:style/Widget.Material.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutAbonentPlan"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayoutAbonentPlan"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayoutAbonentPlan"
+            app:layout_constraintTop_toTopOf="@+id/textInputLayoutAbonentPlan"
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintHorizontal_bias="0.8"/>
         <!--==================================================================================-->
         <!--Адрес-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutAbonentAdress"
+            android:id="@+id/textInputLayoutAbonentAddress"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -184,12 +192,11 @@
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentBalance">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextAbonentAdress"
+                android:id="@+id/textInputEditTextAbonentAddress"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
+                android:layout_height="wrap_content"
+                android:maxLength="255"/>
 
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
@@ -206,28 +213,23 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentAdress">
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutAbonentAddress">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextAbonentCreateDate"
                 style="@style/TextInputEditText"
                 android:editable="false"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--==================================================================================-->
         <!--Кнопка удалить-->
         <Button
             android:id="@+id/abonentDeleteButton"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/abonent_delete"
-            android:textColor="@android:color/holo_red_dark"
-            app:strokeColor="@android:color/holo_red_dark"
             android:layout_marginStart="@dimen/textInputLayoutFromParent"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="@dimen/textInputLayoutFromParent"

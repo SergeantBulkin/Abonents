@@ -39,7 +39,7 @@ public class AbonentsAdapter extends RecyclerView.Adapter<AbonentsAdapter.Abonen
         Abonent abonent = abonents.get(position);
         holder.abonentName.setText(String.format("%s %s", abonent.getLastname(), abonent.getName()));
         holder.abonentNumber.setText(abonent.getMobile_number());
-        holder.abonentDate.setText(abonent.getCreate_date().toString());
+        holder.abonentDate.setText(fromSQLDate(abonent.getCreate_date()));
         holder.bind(abonent, listener);
     }
     //----------------------------------------------------------------------------------------------
@@ -76,6 +76,12 @@ public class AbonentsAdapter extends RecyclerView.Adapter<AbonentsAdapter.Abonen
     public interface AbonentOnItemClickListener
     {
         void abonentItemClicked(Abonent abonent);
+    }
+    //----------------------------------------------------------------------------------------------
+    private String fromSQLDate(String sqlDate)
+    {
+        String[] mas = sqlDate.split("-");
+        return mas[2] + "." + mas[1] + "." + mas[0];
     }
     //----------------------------------------------------------------------------------------------
 }

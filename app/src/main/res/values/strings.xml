@@ -10,4 +10,15 @@
     <string name="hello_abonent_fragment">Hello abonent fragment</string>
     <string name="hello_plan_fragment">Hello plan fragment</string>
     <string name="hello_service_fragment">Hello service fragment</string>
+    <!-- CreateAbonentFragment -->
+    <string name="abonent_name">Имя</string>
+    <string name="abonent_lastname">Фамилия</string>
+    <string name="abonent_age">Возраст</string>
+    <string name="abonent_mobile_number">Номер</string>
+    <string name="abonent_plan">Тарифный план</string>
+    <string name="abonent_balance">Баланс</string>
+    <string name="abonent_adress">Адрес</string>
+    <string name="abonent_create_date">Дата регистрации</string>
+    <string name="abonent_delete">Удалить</string>
+    <string name="abonent_confirm">Применить</string>
 </resources>
