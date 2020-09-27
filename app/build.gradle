@@ -4,12 +4,12 @@ android {
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
     defaultConfig {
-        applicationId "com.example.bottomapp.bar.test"
-        minSdkVersion 19
+        applicationId "by.bsuir.kulinka.abonents"
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.abonents.runner.AndroidJUnitRunner"
     }
     buildFeatures {
         viewBinding true
@@ -50,8 +50,8 @@ dependencies {
     //you need this to use RxAndroid with retrofit.
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'junit:junit:4.13'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    // Testing support
+    androidTestImplementation 'android.arch.core:core-testing:1.1.1'
 }

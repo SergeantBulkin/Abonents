@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.bsuir.bottomapp.bar.abonents.R;
 
-public class ServiceFragment extends Fragment
+public class ServiceFragment extends BaseFragment
 {
     public ServiceFragment()
     {

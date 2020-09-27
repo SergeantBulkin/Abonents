@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">BottomAppBarTest</string>
+    <string name="app_name">Abonents</string>
     <string name="Email">E-mail</string>
     <string name="menu_abonents">Абоненты</string>
     <string name="menu_plans">Планы</string>
     <string name="menu_services">Услуги</string>
     <string name="menu_profile">Profile</string>
-    <string name="btn">btn</string>
+    <string name="error_loading_text">Ошибка соединения</string>
+    <string name="error_loading_button">Повторить</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_abonent_fragment">Hello abonent fragment</string>
     <string name="hello_plan_fragment">Hello plan fragment</string>

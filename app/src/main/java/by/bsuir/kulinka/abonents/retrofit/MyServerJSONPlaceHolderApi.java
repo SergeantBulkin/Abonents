@@ -4,8 +4,15 @@ import by.bsuir.kulinka.abonents.model.Abonent;
 
 import java.util.List;
 
+import by.bsuir.kulinka.abonents.model.Plan;
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Query;
 
 public interface MyServerJSONPlaceHolderApi
 {

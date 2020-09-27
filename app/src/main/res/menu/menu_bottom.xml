@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item0"
+        android:id="@+id/item_abonents"
         android:title="@string/menu_abonents"
         android:icon="@drawable/ic_abonent"/>
 
     <item
-        android:id="@+id/item2"
+        android:id="@+id/item_plans"
         android:title="@string/menu_plans"
         android:icon="@drawable/ic_baseline_plan"/>
 
     <item
-        android:id="@+id/item3"
+        android:id="@+id/item_services"
         android:title="@string/menu_services"
         android:icon="@drawable/ic_service"/>
 </menu>

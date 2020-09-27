@@ -1,26 +1,20 @@
 package by.bsuir.kulinka.abonents;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
-import android.widget.Toolbar;
+import android.view.View;
 
 import com.bsuir.bottomapp.bar.abonents.R;
 import com.bsuir.bottomapp.bar.abonents.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import by.bsuir.kulinka.abonents.fragment.AbonentFragment;
+import by.bsuir.kulinka.abonents.fragment.BaseFragment;
 import by.bsuir.kulinka.abonents.fragment.PlanFragment;
 import by.bsuir.kulinka.abonents.fragment.ServiceFragment;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements BaseFragment.ActivityInterface
 {
     //----------------------------------------------------------------------------------------------
     //Переменная для биндинга
@@ -78,6 +72,19 @@ public class MainActivity extends AppCompatActivity
             }
             return true;
         });
+    }
+    //----------------------------------------------------------------------------------------------
+    //Методы интерфейса BaseFragment
+    @Override
+    public void showBottomBar()
+    {
+        binding.bottomBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideBottomBar()
+    {
+        binding.bottomBar.setVisibility(View.GONE);
     }
     //----------------------------------------------------------------------------------------------
 }
