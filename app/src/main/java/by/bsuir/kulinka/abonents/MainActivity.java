@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements BaseFragment.Acti
     //----------------------------------------------------------------------------------------------
     //Переменная для биндинга
     ActivityMainBinding binding;
+    private SearchView searchView;
 
     //Фрагменты BottomNavigationView
     final Fragment abonents = new AbonentFragment();
@@ -34,12 +35,39 @@ public class MainActivity extends AppCompatActivity implements BaseFragment.Acti
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.toolBar);
+        //getSupportActionBar().setTitle(R.string.app_name);
+
         //Настройка BottomBar
         setUpBottomBar();
 
         //Инициализация списка фрагментов
         createFragments();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.abonents_menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_search:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     //----------------------------------------------------------------------------------------------
     //Инициализация списка фрагментов
     private void createFragments()
