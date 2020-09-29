@@ -16,6 +16,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import by.bsuir.kulinka.abonents.adapter.AbonentsAdapter;
 import by.bsuir.kulinka.abonents.model.Abonent;
@@ -134,9 +135,6 @@ public class AbonentFragment extends BaseFragment implements AbonentsAdapter.Abo
                     @Override
                     public void onError(Throwable e)
                     {
-                        //Логи
-                        addToLog("getAbonentsFromServer - onError");
-
                         //Убрать ProgressBar
                         hideProgressBar();
 
@@ -164,6 +162,7 @@ public class AbonentFragment extends BaseFragment implements AbonentsAdapter.Abo
     {
         AbonentsAdapter abonentsAdapter = new AbonentsAdapter(abonents, this);
         binding.abonentsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.abonentsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.abonentsRecyclerView.setAdapter(abonentsAdapter);
 
         //Сделать видимой FAB
