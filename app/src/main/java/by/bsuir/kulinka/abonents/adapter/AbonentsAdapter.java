@@ -29,6 +29,19 @@ public class AbonentsAdapter extends RecyclerView.Adapter<AbonentsAdapter.Abonen
         this.filteredAbonents = abonents;
         this.listener = listener;
     }
+
+    public AbonentsAdapter(AbonentOnItemClickListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public void setAbonents(List<Abonent> abonents)
+    {
+        this.abonents = abonents;
+        this.filteredAbonents = abonents;
+        notifyDataSetChanged();
+    }
+
     //----------------------------------------------------------------------------------------------
     @NonNull
     @Override

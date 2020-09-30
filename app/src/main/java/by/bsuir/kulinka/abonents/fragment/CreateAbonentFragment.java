@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import by.bsuir.kulinka.abonents.model.Abonent;
 import by.bsuir.kulinka.abonents.model.DisposableManager;
 import by.bsuir.kulinka.abonents.model.Plan;
@@ -30,7 +31,7 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class CreateAbonentFragment extends BaseFragment
+public class CreateAbonentFragment extends Fragment
 {
     //----------------------------------------------------------------------------------------------
     private FragmentCreateAbonentBinding binding;
@@ -62,9 +63,6 @@ public class CreateAbonentFragment extends BaseFragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        //Спрятать BottomBar
-        hideBottomBar();
-
         // Inflate the layout for this fragment
         binding = FragmentCreateAbonentBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
@@ -666,7 +664,6 @@ public class CreateAbonentFragment extends BaseFragment
     private String toSQLDate(String normalDate)
     {
         String[] mas = normalDate.split("[.]");
-        addToLog(Arrays.toString(mas));
         return mas[2] + "-" + mas[1] + "-" + mas[0];
     }
     //----------------------------------------------------------------------------------------------

@@ -50,6 +50,9 @@ dependencies {
     //you need this to use RxAndroid with retrofit.
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 
+    //FloatingActionButtonMenu
+    implementation 'com.github.clans:fab:1.6.4'
+
     testImplementation 'junit:junit:4.13'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // Testing support
