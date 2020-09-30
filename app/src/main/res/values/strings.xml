@@ -2,7 +2,7 @@
     <string name="app_name">Abonents</string>
     <string name="Email">E-mail</string>
     <string name="menu_abonents">Абоненты</string>
-    <string name="menu_plans">Планы</string>
+    <string name="menu_plans">Тарифы</string>
     <string name="menu_services">Услуги</string>
     <string name="menu_profile">Profile</string>
     <string name="error_loading_text">Ошибка соединения</string>
