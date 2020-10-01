@@ -1,11 +1,11 @@
 package by.bsuir.kulinka.abonents.retrofit;
 
-import by.bsuir.kulinka.abonents.model.Abonent;
-
 import java.util.List;
 
+import by.bsuir.kulinka.abonents.model.Abonent;
 import by.bsuir.kulinka.abonents.model.Plan;
 import by.bsuir.kulinka.abonents.model.PlanInfo;
+import by.bsuir.kulinka.abonents.model.Service;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.http.Body;
@@ -41,5 +41,9 @@ public interface MyServerJSONPlaceHolderApi
     //Получить все планы с полной информацией
     @GET("plans/info")
     Observable<List<PlanInfo>> getPlansInfo();
+    //----------------------------------------------------------------------------------------------
+    //Получить все услуги
+    @GET("services")
+    Observable<List<Service>> getServices();
     //----------------------------------------------------------------------------------------------
 }

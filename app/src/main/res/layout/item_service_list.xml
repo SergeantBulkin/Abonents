@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:background="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
     tools:viewBindingIgnore="true"
     android:baselineAligned="false">
 
@@ -12,27 +13,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="7"
-        android:orientation="vertical">
+        android:gravity="center">
 
         <TextView
-            android:id="@+id/item_abonent_name"
+            android:id="@+id/item_service_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp">
-        </TextView>
-
-        <TextView
-            android:id="@+id/item_abonent_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="10dp">
-        </TextView>
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -43,10 +35,9 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/item_abonent_date"
+            android:id="@+id/item_service_cost"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

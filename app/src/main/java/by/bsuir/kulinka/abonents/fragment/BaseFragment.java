@@ -19,9 +19,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import by.bsuir.kulinka.abonents.adapter.AbonentsAdapter;
 import by.bsuir.kulinka.abonents.adapter.PlansInfoAdapter;
+import by.bsuir.kulinka.abonents.adapter.ServiceAdapter;
 import by.bsuir.kulinka.abonents.model.Abonent;
 import by.bsuir.kulinka.abonents.model.DisposableManager;
-import by.bsuir.kulinka.abonents.model.Plan;
 import by.bsuir.kulinka.abonents.model.PlanInfo;
 import by.bsuir.kulinka.abonents.model.Service;
 import by.bsuir.kulinka.abonents.retrofit.MyServerNetworkService;
@@ -30,7 +30,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnItemClickListener, PlansInfoAdapter.PlanOnItemClickListener
+public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnItemClickListener, PlansInfoAdapter.PlanOnItemClickListener, ServiceAdapter.ServiceOnItemClickListener
 {
     //----------------------------------------------------------------------------------------------
     //Объект интерфейса MainActivity
@@ -48,6 +48,7 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     private List<PlanInfo> plansInfo;
     private PlansInfoAdapter plansInfoAdapter;
     private List<Service> services;
+    private ServiceAdapter serviceAdapter;
     //----------------------------------------------------------------------------------------------
     //Обязуем MainActivity имплементировать интерфейс
     @Override
@@ -73,6 +74,7 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
         plansInfo = new ArrayList<>();
         plansInfoAdapter = new PlansInfoAdapter(this);
         services = new ArrayList<>();
+        serviceAdapter = new ServiceAdapter(this);
     }
     //----------------------------------------------------------------------------------------------
     @Nullable
@@ -296,6 +298,46 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
         {
             //Спрятать FAB
             hideFAB();
+
+            DisposableManager.add(MyServerNetworkService
+                .getInstance()
+                .getJSONApi()
+                .getServices()
+                .subscribeOn(Schedulers.io())
+                .flatMap(Observable::fromIterable)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Service>()
+                {
+                    @Override
+                    public void onNext(Service service)
+                    {
+                        services.add(service);
+                    }
+
+                    @Override
+                    public void onError(Throwable e)
+                    {
+                        //Убрать ProgressBar
+                        hideProgressBar();
+
+                        //Сообщение об ошибке
+                        showError();
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onComplete()
+                    {
+                        //Установить загруженный список в адаптер
+                        serviceAdapter.setServices(services);
+
+                        //Убрать ProgressBar
+                        hideProgressBar();
+
+                        //Настройка RecyclerView
+                        setUpRecyclerView(2);
+                    }
+                }));
         } else
         {
             setUpRecyclerView(2);
@@ -331,11 +373,15 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
                 showFAB();
                 break;
             case 2:
+                binding.abonentsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                binding.abonentsRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                binding.abonentsRecyclerView.setAdapter(serviceAdapter);
+
                 //Спрятать ProgressBar
                 hideProgressBar();
 
                 //Сделать видимой FAB
-                //showFAB();
+                showFAB();
                 break;
         }
     }
@@ -397,6 +443,11 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
 
     }
 
+    @Override
+    public void serviceItemClicked(Service service)
+    {
+
+    }
     //----------------------------------------------------------------------------------------------
     //Интерфейс для связи с MainActivity
     public interface ActivityInterface

@@ -14,52 +14,52 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import by.bsuir.kulinka.abonents.model.PlanInfo;
+import by.bsuir.kulinka.abonents.model.Service;
 
-public class PlansInfoAdapter extends RecyclerView.Adapter<PlansInfoAdapter.PlanViewHolder> implements Filterable
+public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> implements Filterable
 {
     //----------------------------------------------------------------------------------------------
-    private List<PlanInfo> plansInfo;
-    private List<PlanInfo> filteredPlansInfo;
-    private PlanOnItemClickListener listener;
+    private List<Service> services;
+    private List<Service> filteredServices;
+    private ServiceOnItemClickListener listener;
     //----------------------------------------------------------------------------------------------
-    public PlansInfoAdapter(PlanOnItemClickListener listener)
+    public ServiceAdapter(ServiceOnItemClickListener listener)
     {
         this.listener = listener;
     }
 
-    public void setPlansInfo(List<PlanInfo> plansInfo)
+    public void setServices(List<Service> services)
     {
-        this.plansInfo = plansInfo;
-        this.filteredPlansInfo = plansInfo;
+        this.services = services;
+        this.filteredServices = services;
         notifyDataSetChanged();
     }
     //----------------------------------------------------------------------------------------------
     @NonNull
     @Override
-    public PlanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_plan_list, parent, false);
-        return new PlanViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_service_list, parent, false);
+        return new ServiceViewHolder(v);
     }
     //----------------------------------------------------------------------------------------------
     @Override
-    public void onBindViewHolder(@NonNull PlanViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position)
     {
-        PlanInfo planInfo = filteredPlansInfo.get(position);
-        holder.planName.setText(planInfo.getName());
-        holder.planCost.setText(String.valueOf(planInfo.getCost()));
-        holder.bind(planInfo, listener);
+        Service service = filteredServices.get(position);
+        holder.serviceName.setText(service.getService_name());
+        holder.serviceCost.setText(String.valueOf(service.getCost()));
+        holder.bind(service, listener);
     }
     //----------------------------------------------------------------------------------------------
     @Override
     public int getItemCount()
     {
-        if (filteredPlansInfo != null)
+        if (filteredServices != null)
         {
-            return filteredPlansInfo.size();
+            return filteredServices.size();
         }
-        else return 0;
+        return 0;
     }
     //----------------------------------------------------------------------------------------------
     @Override
@@ -73,55 +73,55 @@ public class PlansInfoAdapter extends RecyclerView.Adapter<PlansInfoAdapter.Plan
                 String charString = charSequence.toString();
                 if (charSequence.equals(""))
                 {
-                    filteredPlansInfo = plansInfo;
+                    filteredServices = services;
                 } else
                 {
-                    List<PlanInfo> filteredList = new ArrayList<>();
-                    for (PlanInfo planInfo : plansInfo)
+                    List<Service> filteredList = new ArrayList<>();
+                    for (Service service : services)
                     {
-                        if (planInfo.getName().toLowerCase().contains(charString.toLowerCase()))
+                        if (service.getService_name().toLowerCase().contains(charString.toLowerCase()))
                         {
-                            filteredList.add(planInfo);
+                            filteredList.add(service);
                         }
                     }
-                    filteredPlansInfo = filteredList;
+                    filteredServices = filteredList;
                 }
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = filteredPlansInfo;
+                filterResults.values = filteredServices;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results)
             {
-                filteredPlansInfo = (ArrayList<PlanInfo>) results.values;
+                filteredServices = (ArrayList<Service>) results.values;
                 notifyDataSetChanged();
             }
         };
     }
     //----------------------------------------------------------------------------------------------
     //MyViewHolder
-    static class PlanViewHolder extends RecyclerView.ViewHolder
+    static class ServiceViewHolder extends RecyclerView.ViewHolder
     {
-        TextView planName;
-        TextView planCost;
+        TextView serviceName;
+        TextView serviceCost;
 
-        public PlanViewHolder(@NonNull View itemView)
+        public ServiceViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            planName = itemView.findViewById(R.id.item_plan_name);
-            planCost = itemView.findViewById(R.id.item_plan_cost);
+            serviceName = itemView.findViewById(R.id.item_service_name);
+            serviceCost = itemView.findViewById(R.id.item_service_cost);
         }
 
-        public void bind(PlanInfo planInfo, PlanOnItemClickListener planOnItemClickListener)
+        public void bind(Service service, ServiceOnItemClickListener serviceOnItemClickListener)
         {
-            itemView.setOnClickListener(v -> planOnItemClickListener.planItemClicked(planInfo));
+            itemView.setOnClickListener(v -> serviceOnItemClickListener.serviceItemClicked(service));
         }
     }
     //----------------------------------------------------------------------------------------------
-    public interface PlanOnItemClickListener
+    public interface ServiceOnItemClickListener
     {
-        void planItemClicked(PlanInfo planInfo);
+        void serviceItemClicked(Service service);
     }
     //----------------------------------------------------------------------------------------------
 }
