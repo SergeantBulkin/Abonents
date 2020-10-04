@@ -13,7 +13,7 @@
     <string name="hello_service_fragment">Hello service fragment</string>
 
     <string name="search_hint">Введите строку</string>
-    <!-- CreateAbonentFragment -->
+    <!--CreateAbonentFragment-->
     <string name="abonent_name">Имя</string>
     <string name="abonent_lastname">Фамилия</string>
     <string name="abonent_age">Возраст</string>
@@ -24,4 +24,9 @@
     <string name="abonent_create_date">Дата регистрации</string>
     <string name="abonent_delete">Удалить</string>
     <string name="abonent_confirm">Применить</string>
+    <!--CreatePlanFragment-->
+    <string name="plan_name">Название</string>
+    <string name="plan_cost">Стоимость</string>
+    <string name="plan_services">Услуги</string>
+    <string name="plan_add">Добавить</string>
 </resources>

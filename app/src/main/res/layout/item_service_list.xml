@@ -19,7 +19,7 @@
             android:id="@+id/item_service_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/textServicesTextSize"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
@@ -37,7 +37,8 @@
         <TextView
             android:id="@+id/item_service_cost"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textServicesTextSize"/>
 
     </LinearLayout>
 

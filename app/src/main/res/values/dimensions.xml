@@ -2,4 +2,5 @@
 <resources>
     <dimen name="textInputLayoutFromParent">12dp</dimen>
     <dimen name="textInputLayoutFromTop">16dp</dimen>
+    <dimen name="textServicesTextSize">16sp</dimen>
 </resources>

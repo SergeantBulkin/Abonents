@@ -440,7 +440,7 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     @Override
     public void planItemClicked(PlanInfo planInfo)
     {
-
+        activityInterface.loadFragment(CreatePlanFragment.newInstance(planInfo), "planFragment");
     }
 
     @Override

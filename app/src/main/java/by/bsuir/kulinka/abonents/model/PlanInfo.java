@@ -1,8 +1,11 @@
 package by.bsuir.kulinka.abonents.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class PlanInfo
+public class PlanInfo implements Parcelable
 {
     //----------------------------------------------------------------------------------------------
     private int plan_id;
@@ -17,6 +20,22 @@ public class PlanInfo
         this.services = services;
         this.cost = cost;
     }
+
+    public PlanInfo(String name, List<Service> services, float cost)
+    {
+        this.name = name;
+        this.services = services;
+        this.cost = cost;
+    }
+
+    protected PlanInfo(Parcel in)
+    {
+        this.plan_id = in.readInt();
+        this.name = in.readString();
+        this.services = in.createTypedArrayList(Service.CREATOR);
+        this.cost = in.readFloat();
+    }
+
     //----------------------------------------------------------------------------------------------
     public int getPlan_id()
     {
@@ -56,6 +75,36 @@ public class PlanInfo
     public void setCost(float cost)
     {
         this.cost = cost;
+    }
+    //----------------------------------------------------------------------------------------------
+    public static final Creator<PlanInfo> CREATOR = new Creator<PlanInfo>()
+    {
+        @Override
+        public PlanInfo createFromParcel(Parcel in)
+        {
+            return new PlanInfo(in);
+        }
+
+        @Override
+        public PlanInfo[] newArray(int size)
+        {
+            return new PlanInfo[size];
+        }
+    };
+
+    @Override
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeInt(plan_id);
+        dest.writeString(name);
+        dest.writeTypedList(services);
+        dest.writeFloat(cost);
     }
     //----------------------------------------------------------------------------------------------
 }

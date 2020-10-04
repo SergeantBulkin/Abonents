@@ -180,11 +180,6 @@ public class Abonent implements Parcelable
             return new Abonent[size];
         }
     };
-
-    public static Creator<Abonent> getCreator()
-    {
-        return CREATOR;
-    }
     //----------------------------------------------------------------------------------------------
 }
 

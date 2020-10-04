@@ -380,7 +380,7 @@ public class CreateAbonentFragment extends Fragment
             planNames.add(plan.getPlan_name());
         }
 
-        //Установить адаптер для выбора факультета
+        //Установить адаптер для выбора плана
         binding.textFieldAutocompleteAbonentPlan.setAdapter(new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
@@ -389,7 +389,7 @@ public class CreateAbonentFragment extends Fragment
         //Разблокировать выбор плана
         binding.textInputLayoutAbonentPlan.setEnabled(true);
 
-        //Обработка выбора факультета
+        //Обработка выбора плана
         binding.textFieldAutocompleteAbonentPlan.setOnItemClickListener((parent, view, position, id) ->
         {
             //Убрать ошибку
