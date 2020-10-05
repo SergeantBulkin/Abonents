@@ -126,6 +126,7 @@ public class CreateAbonentFragment extends Fragment
             //Заблокировать всё
             disableAllViews();
 
+            //Удалить абонента
             deleteAbonent();
         });
 
@@ -142,9 +143,11 @@ public class CreateAbonentFragment extends Fragment
 
                 if (isAbonent)
                 {
+                    //Обновить абонента
                     updateAbonent();
                 } else
                 {
+                    //Создать абонента
                     createAbonent();
                 }
             }
@@ -511,8 +514,8 @@ public class CreateAbonentFragment extends Fragment
                         //Snackbar
                         makeSnackBar("Ошибка удаления");
 
-                        //Закрыть фрагмент
-                        closeFragment();
+                        //Разблокировать всё
+                        enableAllViews();
                     }
                 }));
     }
@@ -537,11 +540,14 @@ public class CreateAbonentFragment extends Fragment
                 @Override
                 public void onError(Throwable e)
                 {
+                    //Скрыть ProgressBar
+                    hideTopProgressBar();
+
+                    //Snackbar
                     makeSnackBar("Ошибка создания");
 
-                    //Разблокировать всё и убрать ProgressBar
+                    //Разблокировать всё
                     enableAllViews();
-                    hideTopProgressBar();
                 }
             }));
     }
@@ -566,11 +572,14 @@ public class CreateAbonentFragment extends Fragment
                 @Override
                 public void onError(Throwable e)
                 {
+                    //Скрыть ProgressBar
+                    hideTopProgressBar();
+
+                    //Snackbar
                     makeSnackBar("Ошибка обновления");
 
-                    //Разблокировать всё и убрать ProgressBar
+                    //Разблокировать всё
                     enableAllViews();
-                    hideTopProgressBar();
                 }
             }));
     }
