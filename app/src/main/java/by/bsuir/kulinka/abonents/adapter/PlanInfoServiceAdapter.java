@@ -79,15 +79,4 @@ public class PlanInfoServiceAdapter extends RecyclerView.Adapter<PlanInfoService
         void itemServiceRemoveClick(int position);
     }
     //----------------------------------------------------------------------------------------------
-    public void addItem(Service service, int position)
-    {
-        this.serviceList.add(service);
-        notifyItemInserted(position);
-    }
-    public void removeItem(int position)
-    {
-        this.serviceList.remove(position);
-        notifyItemRemoved(position);
-    }
-    //----------------------------------------------------------------------------------------------
 }

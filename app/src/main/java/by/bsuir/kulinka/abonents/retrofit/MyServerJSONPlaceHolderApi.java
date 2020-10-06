@@ -42,6 +42,18 @@ public interface MyServerJSONPlaceHolderApi
     @GET("plans/info")
     Observable<List<PlanInfo>> getPlansInfo();
     //----------------------------------------------------------------------------------------------
+    //Создать новый план
+    @POST("plan/add")
+    Single<PlanInfo> createPlan(@Body PlanInfo planInfo);
+    //----------------------------------------------------------------------------------------------
+    //Обновить план
+    @PUT("plan/update")
+    Single<PlanInfo> updatePlan(@Body PlanInfo planInfo);
+    //----------------------------------------------------------------------------------------------
+    //Удалить план
+    @DELETE("plan/delete")
+    Single<Integer> deletePlan(@Query(value = "planid") int planid);
+    //----------------------------------------------------------------------------------------------
     //Получить все услуги
     @GET("services")
     Observable<List<Service>> getServices();

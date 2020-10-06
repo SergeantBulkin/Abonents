@@ -117,7 +117,7 @@ public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnI
         binding.materialDesignFloatingActionMenuItem2.setOnClickListener(v ->
         {
             //Заменить фрагмент
-
+            activityInterface.loadFragment(new CreatePlanFragment(services, this), "createPlanFragment");
         });
         //Обработчик нажатия на FAB3
         binding.materialDesignFloatingActionMenuItem3.setOnClickListener(v ->
@@ -446,7 +446,7 @@ public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     @Override
     public void planItemClicked(PlanInfo planInfo)
     {
-        activityInterface.loadFragment(CreatePlanFragment.newInstance(planInfo), "planFragment");
+        activityInterface.loadFragment(CreatePlanFragment.newInstance(planInfo, services, this), "planFragment");
     }
 
     @Override
