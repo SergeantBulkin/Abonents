@@ -30,7 +30,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnItemClickListener, PlansInfoAdapter.PlanOnItemClickListener, ServiceAdapter.ServiceOnItemClickListener
+public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnItemClickListener,
+        PlansInfoAdapter.PlanOnItemClickListener,
+        ServiceAdapter.ServiceOnItemClickListener,
+        CreateServiceFragment.CreateServiceDialogInterface, CreatePlanFragment.CreatePlanFragmentInterface
 {
     //----------------------------------------------------------------------------------------------
     //Объект интерфейса MainActivity
@@ -47,7 +50,7 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     private AbonentsAdapter abonentsAdapter;
     private List<PlanInfo> plansInfo;
     private PlansInfoAdapter plansInfoAdapter;
-    private List<Service> services;
+    private ArrayList<Service> services;
     private ServiceAdapter serviceAdapter;
     //----------------------------------------------------------------------------------------------
     //Обязуем MainActivity имплементировать интерфейс
@@ -120,7 +123,10 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
         binding.materialDesignFloatingActionMenuItem3.setOnClickListener(v ->
         {
             //Заменить фрагмент
-
+            CreateServiceFragment dialog = new CreateServiceFragment(this);
+            dialog.show(requireActivity().getSupportFragmentManager(), "createServiceDialogFragment");
+            //Закрыть FloatingMenu
+            binding.floatingActionMenu.close(true);
         });
 
         //Обработчик нажатия на кнопку "Повторить"
@@ -446,7 +452,78 @@ public class BaseFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     @Override
     public void serviceItemClicked(Service service)
     {
+        DialogFragment dialog = CreateServiceFragment.newInstance(service, this);
+        dialog.show(requireActivity().getSupportFragmentManager(), "serviceFragment");
+    }
+    //----------------------------------------------------------------------------------------------
+    //Методы интерфейса CreateServiceFragment
+    @Override
+    public void deleteServicesList(int deletedServiceID)
+    {
+        for (Service service : services)
+        {
+            if (deletedServiceID == service.getId())
+            {
+                services.remove(service);
+                break;
+            }
+        }
+        serviceAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void createServiceList(Service service)
+    {
+        services.add(service);
+        serviceAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void updateServiceList(Service service)
+    {
+        for (int i = 0; i < services.size(); i++)
+        {
+            if (services.get(i).getId() == service.getId())
+            {
+                services.set(i, service);
+            }
+        }
+        serviceAdapter.notifyDataSetChanged();
+    }
+
+    //Методы интерфейса CreatePlanFragment
+    @Override
+    public void deletePlanList(int deletedPlanID)
+    {
+        for (PlanInfo planInfo : plansInfo)
+        {
+            if (deletedPlanID == planInfo.getPlan_id())
+            {
+                plansInfo.remove(planInfo);
+                break;
+            }
+        }
+        plansInfoAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void createPlanList(PlanInfo planInfo)
+    {
+        plansInfo.add(planInfo);
+        plansInfoAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void updatePlanList(PlanInfo planInfo)
+    {
+        for (int i = 0; i < plansInfo.size(); i++)
+        {
+            if (plansInfo.get(i).getPlan_id() == planInfo.getPlan_id())
+            {
+                plansInfo.set(i, planInfo);
+            }
+        }
+        plansInfoAdapter.notifyDataSetChanged();
     }
     //----------------------------------------------------------------------------------------------
     //Интерфейс для связи с MainActivity

@@ -46,4 +46,16 @@ public interface MyServerJSONPlaceHolderApi
     @GET("services")
     Observable<List<Service>> getServices();
     //----------------------------------------------------------------------------------------------
+    //Создать новую услугу
+    @POST("service/create/body")
+    Single<Service> createService(@Body Service service);
+    //----------------------------------------------------------------------------------------------
+    //Удалить услугу
+    @DELETE("service/delete")
+    Single<Integer> deleteService(@Query(value = "serviceid") int serviceid);
+    //----------------------------------------------------------------------------------------------
+    //Обновить услугу
+    @PUT("service/update")
+    Single<Service> updateService(@Body Service service);
+    //----------------------------------------------------------------------------------------------
 }

@@ -29,4 +29,8 @@
     <string name="plan_cost">Стоимость</string>
     <string name="plan_services">Услуги</string>
     <string name="plan_add">Добавить</string>
+    <!--CreateServiceDialogFragment-->
+    <string name="service_create">Создать услугу</string>
+    <string name="service_name">Название</string>
+    <string name="service_cost">Стоимость</string>
 </resources>
