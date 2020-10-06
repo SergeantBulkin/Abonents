@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import by.bsuir.kulinka.abonents.fragment.BaseFragment;
+import by.bsuir.kulinka.abonents.fragment.MainFragment;
 
-public class MainActivity extends AppCompatActivity implements BaseFragment.ActivityInterface
+public class MainActivity extends AppCompatActivity implements MainFragment.ActivityInterface
 {
     //----------------------------------------------------------------------------------------------
     //Переменная для биндинга
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements BaseFragment.Acti
     private SearchView searchView;
 
     //Фрагменты BottomNavigation
-    final BaseFragment baseFragment = new BaseFragment();
+    final MainFragment baseFragment = new MainFragment();
     final FragmentManager fm = getSupportFragmentManager();
     //----------------------------------------------------------------------------------------------
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements BaseFragment.Acti
         fm.beginTransaction().add(R.id.main_container, baseFragment, "baseFragment").commit();
     }
     //----------------------------------------------------------------------------------------------
-    //Методы интерфейса BaseFragment
+    //Методы интерфейса MainFragment
     @Override
     public void loadFragment(Fragment fragment, String fragmentTAG)
     {

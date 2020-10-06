@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bsuir.bottomapp.bar.abonents.databinding.FragmentBaseBinding;
+import com.bsuir.bottomapp.bar.abonents.databinding.FragmentMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,7 +41,7 @@ public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     public ActivityInterface activityInterface;
 
     //Биндинг
-    private FragmentBaseBinding binding;
+    private FragmentMainBinding binding;
 
     //Выбранная вкладка
     private int chosenTab = 0;
@@ -86,7 +87,7 @@ public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     {
         addToLog("onCreateView");
         // Inflate the layout for this fragment
-        binding = FragmentBaseBinding.inflate(inflater, container, false);
+        binding = FragmentMainBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
     //----------------------------------------------------------------------------------------------
@@ -111,7 +112,7 @@ public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnI
         binding.materialDesignFloatingActionMenuItem1.setOnClickListener(v ->
         {
             //Заменить фрагмент
-            activityInterface.loadFragment(new CreateAbonentFragment(), "baseFragment");
+            activityInterface.loadFragment(new CreateAbonentFragment(), "createAbonentFragment");
         });
         //Обработчик нажатия на FAB2
         binding.materialDesignFloatingActionMenuItem2.setOnClickListener(v ->
@@ -530,54 +531,6 @@ public class MainFragment extends Fragment implements AbonentsAdapter.AbonentOnI
     public interface ActivityInterface
     {
         void loadFragment(Fragment fragment, String fragmentTAG);
-    }
-    //----------------------------------------------------------------------------------------------
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-        addToLog("onStart");
-    }
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        addToLog("onResume");
-    }
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        addToLog("onPause");
-    }
-    @Override
-    public void onStop()
-    {
-        super.onStop();
-        addToLog("onStop");
-    }
-    @Override
-    public void onDestroyView()
-    {
-        super.onDestroyView();
-        addToLog("onDestroyView");
-    }
-    @Override
-    public void onDestroy()
-    {
-        //Логи
-        addToLog("onDestroy - Метод открыт");
-
-        super.onDestroy();
-
-        //Отписка
-        DisposableManager.dispose();
-    }
-    @Override
-    public void onDetach()
-    {
-        super.onDetach();
-        addToLog("onDetach");
     }
     //----------------------------------------------------------------------------------------------
 }
