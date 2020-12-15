@@ -11,7 +11,7 @@ public class MyServerNetworkService
     private static MyServerNetworkService instance;
 
     //Постоянная часть ссылки
-    private static final String BASE_URL = "http://192.168.43.231:8080/";
+    private static final String BASE_URL = "http://192.168.1.3:8080/";
     private static Retrofit retrofit;
     //----------------------------------------------------------------------------------------------
     //Конструктор

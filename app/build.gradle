@@ -29,12 +29,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.android.support:design:29.0.0'
+
     //Кастомный BottomBar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
-
     //RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //Материал элементы
@@ -44,7 +44,7 @@ dependencies {
     //Конвертер в JSON
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //RxJava 2
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
     //RxAndroid
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     //you need this to use RxAndroid with retrofit.
